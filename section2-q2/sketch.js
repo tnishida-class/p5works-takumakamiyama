@@ -6,7 +6,7 @@ function setup() {
   c = color(255,0,0)
   b = color(0,0,0)
   for(let i = 0; i < 8; i++){
-    for(let j = 0; j < 8; j++){
+    for(let j = 0; j < 8; j++)}
       // BLANK[1] (hint: rectのx座標は size * i, y座標はsize * j)
       if (i % 2 == 0){
         fill(j % 2 == 1 ? 150 : 255);
