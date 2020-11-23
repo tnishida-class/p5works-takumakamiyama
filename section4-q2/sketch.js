@@ -3,21 +3,29 @@ let x, y, vx, vy;
 
 function setup(){
   createCanvas(windowWidth, windowHeight);
-  x = width / 2;
-  y = height / 2;
+  x = width / 4;
+  y = height / 4;
   vx = 8;
   vy = 8;
+  angle = 0;
 }
 
 function draw(){
   background(160, 192, 255);
   // BLANK[2] (hint: 作った star 関数を使います)
-
+ angle += 0.1;
+ star(x, y, 40, angle);
+ x += vx;
+ y += vy;
   // 端の処理パターン (1) 反対側から出てくる
-  if(x > width){ x = 0; }
-  else if(x < 0){ x = width; }
-  if(y > height){ y = 0; }
-  if(y < 0){ y = height; }
+  if(x < 0 || x > width){
+    vx = -1 * vx;
+  }
+  if(y < 0 || y > height){
+    vy = -1 * vy;
+  }
+  x = constrain(x, 0, width);
+  y = constrain(y, 0, height);
 }
 
 function star(cx, cy, r, angle){
@@ -34,4 +42,9 @@ function star(cx, cy, r, angle){
 
 function windowResized(){
   resizeCanvas(windowWidth, windowHeight);
+}
+
+function mouseClicked(){
+  x = mouseX;
+  y = mouseY;
 }
